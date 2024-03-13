@@ -9,28 +9,28 @@ PKG_RELEASE:=1
 PKGARCH:=all 
 
 ifeq ($(ARCH),mipsel)
-	LUCKY_ARCH:=arm64
+	LUCKY_ARCH:=mipsle_softfloat
 endif
 ifeq ($(ARCH),mips)
-	LUCKY_ARCH:=arm64
+	LUCKY_ARCH:=mips_softfloat
 endif
 ifeq ($(ARCH),i386)
-	LUCKY_ARCH:=arm64
+	LUCKY_ARCH:=i386
 endif
 ifeq ($(ARCH),x86_64)
-	LUCKY_ARCH:=arm64
+	LUCKY_ARCH:=x86_64
 endif
 ifeq ($(ARCH),arm)
-	LUCKY_ARCH:=arm64
+	LUCKY_ARCH:=armv7
 endif
 ifeq ($(BOARD),bcm53xx)
-	LUCKY_ARCH:=arm64
+	LUCKY_ARCH:=armv6
 ifeq ($(word 2,$(subst +,$(space),$(call qstrip,$(CONFIG_CPU_TYPE)))),)
-	LUCKY_ARCH:=arm64
+	LUCKY_ARCH:=armv5
 endif
 endif
 ifeq ($(BOARD),kirkwood)
-	LUCKY_ARCH:=arm64
+	LUCKY_ARCH:=armv5
 endif
 ifeq ($(ARCH),aarch64)
 	LUCKY_ARCH:=arm64
@@ -77,7 +77,7 @@ rm -rf /etc/config/lucky.daji
 endef 
 
 define Build/Prepare
-	[ ! -f $(PKG_BUILD_DIR)/$(PKG_NAME)_$(PKG_VERSION)_Linux_$(LUCKY_ARCH).tar.gz ] && wget https://github.com/gdy666/lucky/releases/download/v$(PKG_VERSION)/$(PKG_NAME)_$(PKG_VERSION)_Linux_$(LUCKY_ARCH).tar.gz -O $(PKG_BUILD_DIR)/$(PKG_NAME)_$(PKG_VERSION)_Linux_$(LUCKY_ARCH).tar.gz
+	[ ! -f $(PKG_BUILD_DIR)/$(PKG_NAME)_$(PKG_VERSION)_Linux_$(LUCKY_ARCH).tar.gz ] && wget https://github.com/gdy666/lucky/releases/download/v$(PKG_VERSION)/$(PKG_NAME)_$(PKG_VERSION)_Linux_arm64.tar.gz -O $(PKG_BUILD_DIR)/$(PKG_NAME)_$(PKG_VERSION)_Linux_$(LUCKY_ARCH).tar.gz
 	tar -xzvf $(PKG_BUILD_DIR)/$(PKG_NAME)_$(PKG_VERSION)_Linux_$(LUCKY_ARCH).tar.gz -C $(PKG_BUILD_DIR)
 endef
 
