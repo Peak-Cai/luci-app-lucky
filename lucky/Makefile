@@ -9,28 +9,28 @@ PKG_RELEASE:=1
 PKGARCH:=all 
 
 ifeq ($(ARCH),mipsel)
-	LUCKY_ARCH:=mipsle_softfloat
+	LUCKY_ARCH:=arm64
 endif
 ifeq ($(ARCH),mips)
-	LUCKY_ARCH:=mips_softfloat
+	LUCKY_ARCH:=arm64
 endif
 ifeq ($(ARCH),i386)
-	LUCKY_ARCH:=i386
+	LUCKY_ARCH:=arm64
 endif
 ifeq ($(ARCH),x86_64)
-	LUCKY_ARCH:=x86_64
+	LUCKY_ARCH:=arm64
 endif
 ifeq ($(ARCH),arm)
-	LUCKY_ARCH:=armv7
+	LUCKY_ARCH:=arm64
 endif
 ifeq ($(BOARD),bcm53xx)
-	LUCKY_ARCH:=armv6
+	LUCKY_ARCH:=arm64
 ifeq ($(word 2,$(subst +,$(space),$(call qstrip,$(CONFIG_CPU_TYPE)))),)
-	LUCKY_ARCH:=armv5
+	LUCKY_ARCH:=arm64
 endif
 endif
 ifeq ($(BOARD),kirkwood)
-	LUCKY_ARCH:=armv5
+	LUCKY_ARCH:=arm64
 endif
 ifeq ($(ARCH),aarch64)
 	LUCKY_ARCH:=arm64
